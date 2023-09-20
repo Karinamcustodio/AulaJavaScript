@@ -15,9 +15,24 @@
         <button onclick="adicionarFrutas()">Adicionar Frutas</button>
 
     <ul>
-        <!--Listar os dados do array de frutas -->
+        <!--Listar os dados do array de frutas-->
     </ul>
     <button onclick="carregarLista()">Carregar Lista</button>
+
+    <table>
+        <thead>
+            <th>
+                <!--
+                <td>Descrição</td>
+                <td>Ações</td>
+                -->
+            </th>
+        </thead>
+        <tbody>
+            <!--Listar dados do array de frutas-->
+        </tbody>
+    </table>
+    <button onclick="carregarEmtabela()">Carregar em tabela</button>
 
     <script>
         const fruits = ["Banana", "Orange", "Apple", "Mango"]
@@ -26,14 +41,15 @@
         function adicionarFrutas(){
             let fruitsAdicionadas = document.getElementById("fruitsAdicionadas")
             
-            if (fruitsAdicionadas.value == ""){
+            if (fruitsAdicionadas.value == "") {
                 alert("Adicione o nome de uma fruta")
                 fruitsAdicionadas.focus()
                 return
             }
             
             if (fruits.includes(fruitsAdicionadas.value)) {
-                alert("Esse nome já existe na lista! Adicione outro nome");
+                alert("Esse nome já existe na lista! Adicione outro nome")
+                fruitsAdicionadas.focus()
                 return;
             }
 
@@ -51,6 +67,33 @@
             }
 
             document.getElementsByTagName("ul")[0].innerHTML = "Lista das frutas:" + itens
+        }
+
+        function carregarEmtabela(){
+            let i = 0
+            let itens = ''
+            while(i < fruits.length) {
+              itens += `<tr><td>${fruits[i]}</td><td><button onclick=excluir('${fruits[i]}')>Excluir</button></td></tr>`
+               i++  
+            } 
+
+            document.getElementsByTagName("tbody")[0].innerHTML = "Lista das frutas:" + itens
+        }
+
+        function excluir(item){
+            let indice = fruits.indexOf(item)
+            fruits.splice(indice,1)
+            carregarEmtabela()
+        }
+        
+        function frutaJaExiste(item){
+            let size = fruits.length
+            for(let i = 0; i < size ; i++){
+                if(fruits[i] == item){
+                    return true
+                }
+            }
+            return false
         }
     </script>
 </body>
