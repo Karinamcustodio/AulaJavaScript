@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de frutas</title>
+</head>
+<body>
+    <!--
+    Criar uma página para inserir frutas em um array e mostrar na tela como uma lista.
+    -->
+        <p>-- Insira frutas na nossa lista: --</p>
+        <input type="text" id="fruitsAdicionadas" placeholder="Digite o nome das frutas desejadas" />
+        <button onclick="adicionarFrutas()">Adicionar Frutas</button>
+
+    <ul>
+        <!--Listar os dados do array de frutas -->
+    </ul>
+    <button onclick="carregarLista()">Carregar Lista</button>
+
+    <script>
+        const fruits = ["Banana", "Orange", "Apple", "Mango"]
+        let size = fruits.length
+
+        function adicionarFrutas(){
+            let fruitsAdicionadas = document.getElementById("fruitsAdicionadas")
+            
+            if (fruitsAdicionadas.value == ""){
+                alert("Adicione o nome de uma fruta")
+                fruitsAdicionadas.focus()
+                return
+            }
+            
+            if (fruits.includes(fruitsAdicionadas.value)) {
+                alert("Esse nome já existe na lista! Adicione outro nome");
+                return;
+            }
+
+            fruits.push(fruitsAdicionadas.value)
+            fruitsAdicionadas.value = ''
+        }
+
+        function carregarLista(){
+            let i = 0
+            let itens = ''
+
+            while(i < fruits.length) {
+                itens += `<li>${fruits[i]}</li>`
+                i++
+            }
+
+            document.getElementsByTagName("ul")[0].innerHTML = "Lista das frutas:" + itens
+        }
+    </script>
+</body>
+</html>

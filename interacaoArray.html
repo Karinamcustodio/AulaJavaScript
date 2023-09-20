@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interação com Array</title>
+</head>
+<body>
+    <ul>
+        <!--Listar os dados do array de frutas -->
+    </ul>
+    <hr>
+    <button onclick="carregarLista()">Carregar Lista</button>
+
+    <script>
+        const fruits = ["Banana", "Orange", "Apple", "Mango"]
+        let size = fruits.length
+
+        /*
+        // Usando o for =
+        for(i = 0; i < size; i++){
+            console.log(fruits[i])
+        }
+        
+        // Usando o while =
+        let i = 0
+        while(i < size) {
+            console.log(fruits[i])
+            i++
+        }
+        */
+       
+        function carregarLista(){
+            let i = 0
+            let itens = ''
+
+            while(i < fruits.length) {
+                itens += `<li>${fruits[i]}</li>`
+                i++
+            }
+
+            document.getElementsByTagName("ul")[0].innerHTML = itens
+            // TagName = Array
+        }
+    </script>
+</body>
+</html>

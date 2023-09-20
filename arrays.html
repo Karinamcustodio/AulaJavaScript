@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+<body>
+    <script>
+        // Array no JavaScript não precisa declarar tamanho
+
+        var frutas = ["Maça", "Pera"]
+        console.log(frutas.length) // length = Tamanho do array
+
+        frutas.push("Laranja") // push = Acrescenta para a ultima posição
+        console.log(frutas)
+
+        frutas.unshift("Limão") // unshift = Acrescenta para a primeira posição
+        console.log(frutas)
+        console.log(frutas[2]) // mostra o valor na posição 2
+
+        frutas.pop() // pop = Exclui a ultima posição
+        console.log(frutas)
+
+        frutas.shift() // shift = Excluiu a primeira posição
+        console.log(frutas)
+
+        frutas.push({nome:"Marina", idade:"15" }) // Acrescenta na ultima posição um objeto
+        console.log(frutas)
+
+        // 
+
+        const fruits = ["Banana", "Orange", "Apple", "Mango"]
+        console.log(fruits)
+
+        delete fruits[0]; 
+        console.log(fruits)
+
+        fruits.splice(2,1)
+        console.log(fruits)
+        
+
+    </script>
+</body>
+</html>

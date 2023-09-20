@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetos</title>
+</head>
+<body>
+    <script>
+        /* 
+        var car = {placa:"LZZ-1976", ano:"1976", cor:"vinho", modelo:"fusca" }
+        console.log(car)
+        console.log(car.placa)
+
+        car.cor = "Vermelho"
+        console.log(car)
+        */
+       
+        var pessoa = {nome:"Karina", telefone:"(47)99616-1518", email:"karinamoreiracustodio@gmail.com"}
+        console.log(pessoa)
+        console.log(pessoa.nome)
+
+        var jsonPessoa = JSON.stringify(pessoa)
+        console.log(jsonPessoa)
+        console.log(jsonPessoa.nome) // Não localiza porque é uma string
+
+        var objPessoa = JSON.parse(jsonPessoa)
+        console.log(objPessoa)
+        console.log(objPessoa.email)
+    </script>
+</body>
+</html>
