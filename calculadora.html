@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora</title>
+</head>
+<body>
+    <!-- Criar uma calculadora com as principais operações matemáticas. -->
+
+  <p style="color: rgb(255, 79, 93);">Digite um número, escolha uma operação e digite o segundo número. <br>Após clique em Calcular!</p>
+
+  <p>Digite o primeiro número:</p>
+  <input type="text" id="numero1" placeholder="Informe o primeiro número" /><br><br>
+
+  <button id="somar" onclick="selecionarOperacao('somar')">Somar</button>
+  <button id="subtrair" onclick="selecionarOperacao('subtrair')">Subtrair</button>
+  <button id="multiplicar" onclick="selecionarOperacao('multiplicar')">Multiplicar</button>
+  <button id="dividir" onclick="selecionarOperacao('dividir')">Dividir</button>
+    
+  <p>Digite o segundo número:</p>
+  <input type="text" id="numero2" placeholder="Informe o segundo número" /><br><br>
+  <button onclick="calcular()">Calcular</button>
+
+  <p>Resultado:</p>
+  <div id="resultado"></div>
+
+  <script>
+    function selecionarOperacao(operacao){
+      operacaoSelecionada = operacao;
+    }
+
+    function calcular(){
+      let numero1 = parseFloat(document.getElementById("numero1").value);
+      let numero2 = parseFloat(document.getElementById("numero2").value);
+
+      if (operacaoSelecionada === 'somar') {
+        resultado = somar(numero1, numero2);
+      } else if (operacaoSelecionada === 'subtrair') {
+        resultado = subtrair(numero1, numero2);
+      } else if (operacaoSelecionada === 'multiplicar') {
+        resultado = multiplicar(numero1, numero2);
+      } else if (operacaoSelecionada === 'dividir') {
+        resultado = dividir(numero1, numero2);
+      }
+
+      document.getElementById("resultado").innerHTML = resultado;
+    }
+
+    function somar(numero1, numero2){
+      let resultado = numero1 + numero2;
+      return resultado
+    }
+
+    function subtrair(numero1, numero2){
+      let resultado = numero1 - numero2;
+      return resultado
+    }
+
+    function multiplicar(numero1, numero2){
+      let resultado = numero1 * numero2;
+      return resultado
+    }
+
+    function dividir(numero1, numero2){
+      let resultado = numero1 / numero2;
+      return resultado
+    }
+  </script>
+</body>
+</html>
