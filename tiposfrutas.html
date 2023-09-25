@@ -1,22 +1,84 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tipos de Frutas</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tipos de Frutas</title>
+  </head>
+  <body>
+    <!-- Criar uma página que permita ao usuário digitar tipos de frutas. 
+    O usuário deve ter a opção de escolher como deve visualizar os dados: em parágrafo, em uma lista ou em uma tabela.
+    -->
 
-  <!-- Criar uma página que permita ao usuário digitar tipos de frutas. 
-  O usuário deve ter a opção de escolher como deve visualizar os dados: em parágrafo, em uma lista ou em uma tabela.
-  -->
-<script>
-  function addParagrafo(){
-    let fruta = document.getElementsByTagName('input')[0]
-  }
-</script>
-  
+    <p>Digite tipos de frutas:</p>
+    <input
+      type="text"
+      id="fruitsAdicionadas"
+      placeholder="Digite tipos de frutas"
+    /><br /><br />
+    <button onclick="adicionarFrutas()">Adicionar frutas na lista</button>
+    <div id="ondeMostrar">
+      <!---->
+    </div>
 
-</body>
+    <p>Escolha o botão de como deseja visualizar os dados:</p>
+    <button onclick="MostrarParagrafo()">Em parágrafo</button>
+    <button onclick="MostrarLista()">Em uma lista</button>
+    <button onclick="MostrarTabela()">Em uma tabela</button>
+
+    <script>
+      let fruits = [];
+      //let size = fruits.length;
+
+      function adicionarFrutas() {
+        let fruitsAdicionadas = document.getElementById("fruitsAdicionadas");
+
+        if (fruitsAdicionadas.value == "") {
+          alert("Adicione o nome de uma fruta");
+          fruitsAdicionadas.focus();
+          return;
+        }
+
+        if (fruits.includes(fruitsAdicionadas.value)) {
+          alert("Esse nome já existe na lista! Adicione outro nome");
+          fruitsAdicionadas.focus();
+          return;
+        }
+
+        fruits.push(fruitsAdicionadas.value);
+        fruitsAdicionadas.value = "";
+      }
+
+      function MostrarParagrafo() {
+        let x = 0;
+        let ondeMostrar = document.getElementById("ondeMostrar");
+
+        while (x < fruits.length) {
+          ondeMostrar.innerHTML += `<p>${fruits[x]}</P>`;
+          x++;
+        }
+      }
+
+      function MostrarLista() {
+        let x = 0
+        let ondeMostrar = document.getElementById('ondeMostrar')
+
+        while (x < fruits.length) {
+          ondeMostrar.innerHTML += `<li>${fruits[x]}</li>`;
+          x++;
+        }
+      }
+
+      function MostrarTabela() {
+        let x = 0
+        let ondeMostrar = document.getElementById('ondeMostrar')
+
+        while (x < fruits.length) {
+          ondeMostrar.innerHTML += `<tr><td>${fruits[x]}</td><td>`;
+          x++;
+        }
+      }
+    </script>
+  </body>
 </html>
