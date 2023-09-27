@@ -13,18 +13,47 @@
     mostrar os números digitados em ordem crescente.
     -->
     <div>
+      <h2>Ordenar os números</h2>
       <input type="number" placeholder="Informe numero" />
       <button onclick="inserir(listar)">Inserir</button>
       <div>Numeros inseridos: <span></span></div>
+      <br>
       <button onclick="mostrarArrayOrdenado(listar)">Ordenar array</button>
       <div>Numeros ordenados: <span></span></div>
     </div>
 
+    <div>
+      <h2>Encontrar a posição de um número</h2>
+      <input type="text" id="numeroProcurado" placeholder="Informe o número que deseja pesquisar" />
+      <button onclick="mostarPosicao()">Pesquisar</button>
+      <input type="text" id="resultado" readonly />
+    </div>
+
+    <div>
+      <h2>Excluir um número</h2>
+      <input type="text" id="numeroExcluir" placeholder="informe número que deseja excluir" />
+      <button onclick="excluir()">Excluir</button>
+      <p>Novo Array: <span id="novoarray"></span></p>
+    </div>
+
+    <!-- <div>
+      <h2>Ordenar os números</h2>
+      <button onclick="mostrarArrayOrdenado(listar)">Ordenar array</button>
+      <div>Numeros ordenados: <span></span></div>
+    </div> -->
+
     <script>
       let numeros = [];
+
       function inserir(callback) {
         let inputNumero = document.getElementsByTagName("input")[0];
-        //validar se numero foi informado
+
+        //validar se número foi informado
+        if (inputNumero.value === "") {
+          alert("É preciso digitar um número");
+          inputNumero.focus();
+          return;
+        }
 
         //adicionar no array
         numeros.push(parseInt(inputNumero.value));
@@ -49,7 +78,6 @@
 
       function mostrarArrayOrdenado(callback) {
         //ordenar array em ordem crescente
-        //[10, 3, 4, 3]
         let trocou = true;
         while (trocou) {
           trocou = false;
@@ -64,6 +92,47 @@
         }
         callback(1);
       }
+
+      // Informar um número e mostre em que posição do array ele se encontra;
+      function pesquisar(numero) {
+        for (let i = 0; i < numeros.length; i++) {
+          if (numeros[i] == numero) {
+            return i;
+          }
+        }
+        return -1;
+      }
+
+      function mostarPosicao() {
+        let numeroProcurado = document.getElementById("numeroProcurado");
+        document.getElementById("resultado").value = pesquisar(
+          numeroProcurado.value
+        );
+      }
+
+      // Informar um número e remover do array;
+      function excluir() {
+        let numeroExcluir = document.getElementById("numeroExcluir");
+        let posicao = pesquisar(numeroExcluir.value);
+        numeros.splice(posicao, 1);
+
+        // Mostrar o novo array
+        let novoarray = document.getElementById("numeros");
+        document.getElementById("novoarray").innerHTML = numeros;
+      }
+
+      // Informar um número e substituir seu valor no array.
+      function substituir() {
+        let substituirNumero = document.getElementById("substituirNumero");
+        let posicao = pesquisar(substituirNumero)
+        
+
+      }
+
+      // Informar a ordem que deseja visualizar os dados: crescente, decrescente, ou na ordem que foi inserida;
+      function ordenar() {}
+      numeros.sort((a, b) => a - b); //considera conteudo como numero e ordena crescente
+      numeros.sort((a, b) => b - a); //considera conteudo como numero e ordena decrescente
     </script>
   </body>
 </html>
