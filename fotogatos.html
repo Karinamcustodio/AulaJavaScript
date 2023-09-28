@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Link Fotos Gatos</title>
+    <style>
+      #gatos img {
+        /* display: flex; */
+        width: 200px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <figure>
+      <img src="" alt="imagensGatos" width="300" height="300" />
+      <figcaption><b>ID: </b><span></span></figcaption>
+    </figure>
+    <!-- <button onclick="verFotos()">Ver imagens</button> -->
+
+    <button onclick="verVariasFotos()">Ver 10 imagens</button>
+    <div id="gatos">
+      <!---->
+    </div>
+
+    <script>
+      // Usar o fetch para consumir a API https://api.thecatapi.com/v1/images/search?limit=10 e mostrar os dados em html
+      function verVariasFotos() {
+        fetch("https://api.thecatapi.com/v1/images/search?limit=10")
+          .then((dados) => dados.json())
+          .then((response) => {
+            let imagens = "";
+            for (let i = 0; i < response.length; i++) {
+              imagens += `<img src='${response[i].url}' alt='${i}' />'`;
+            }
+            document.getElementById("gatos").innerHTML = imagens;
+          });
+      }
+
+      // Usar o fetch para consumir a API https://api.thecatapi.com/v1/images/search e mostrar em um card HTML.
+      function verFotos() {
+        fetch(`https://api.thecatapi.com/v1/images/search`)
+          .then((dados) => dados.json())
+          .then((response) => {
+            console.log(response);
+            document.getElementsByTagName("img")[0].src = response[0].url;
+            document.getElementsByTagName("span")[0].innerHTML = response[0].id;
+          })
+          .catch((erro) => console.log(erro));
+      }
+      setInterval(verFotos, 2000);
+    </script>
+  </body>
+</html>
