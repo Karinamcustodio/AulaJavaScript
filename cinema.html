@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cinema</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  </head>
+  <body>
+    <!-- 
+    Criar uma página que represente uma sala de cinema. 
+    O usuário deve informar quantas cadeiras deseja ter na sala. 
+    Deve ser criada a quantidade de cadeiras informadas, estilizadas na cor verde, ou seja representando cadeiras disponíveis. 
+    Ao selecionar uma cadeira, mudar o estilo para vermelho. 
+    Listar números de cadeiras disponíveis e números de cadeiras ocupadas. 
+    -->
+    <p>Digite quantas cadeiras deseja ver na sala:</p>
+    <input type="number" placeholder="Informe o número de cadeiras" />
+    <button id="quatidadesCadeiras">Ver sala</button>
+
+    <div>
+      <!--Espaço para as cadeiras-->
+    </div>
+
+    <script>
+      $(document).ready(() => {
+        $("#quatidadesCadeiras").click(() => {
+          // criar a sala com a quantidade de cadeiras digitadas pelo usuário
+          
+          let quatidadesCadeiras = $('input').val() // pega o valor do imput
+          let cadeiras = ''
+
+          for(let i = 1; i <= quatidadesCadeiras; i++){
+            cadeiras += `<button>${i}</button>`
+          }
+
+          // mostra no html
+          $('div').html(cadeiras)
+          
+          $('button').dblclick(()=>{
+            $('').addClass('red')
+           })
+
+        })
+      });
+    </script>
+  </body>
+</html>
