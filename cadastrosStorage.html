@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LoginUsuario</title>
+    <link rel="stylesheet" href="./CSS/estilos.css" />
+  </head>
+
+  <body>
+    <p>Usuário:</p>
+    <input
+      id="email"
+      type="email"
+      placeholder="Insira o seu e-mail de usuário"
+    />
+    <p>Senha:</p>
+    <input id="senha" type="password" placeholder="Insira a sua senha" />
+
+    <button onclick="login()">Login</button>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <!-- <button onclick="excluir()">Excluir usuário</button> -->
+
+    <script>
+      function cadastrar() {
+        // Usuario digita o email e senha para se cadastrar
+        // validar que ele colocou um e-mail // validar se o e-mail está correto com @*
+        // validar se o e-mail já existe no cadastro
+        // cadastrar no objeto
+        let contatos = localStorage.getItem("usuario");
+
+        if (email.value === "") {
+          alert("Adicione um e-mail!");
+          email.focus();
+          return;
+        }
+
+        if (contatos.includes(email.value)) {
+          alert("Esse e-mail já existe! Faça seu login.");
+          email.focus();
+          return;
+        }
+
+        if (contatos !== "") {
+          contatos = JSON.parse(contatos);
+          let novoContato = {
+            email: email.value,
+            senha: senha.value,
+          };
+
+          contatos.push(novoContato);
+          email.value = "";
+          senha.value = "";
+        }
+        
+        localStorage.setItem("usuario", JSON.stringify(contatos));
+      }
+
+      function login() {
+        // Verificar se o e-mail e senha está cadastrada no banco
+        // Verificar se a senha está correta com a salva no banco
+        // Se estiver ok seria direcionado para uma nova pagina
+        // Se não estiver cadastrado, dar um alerta e mandar para o cadastro primeiro
+        let contatos = localStorage.getItem("usuario");
+
+        for(let i = 0; i < contatos.length; i++){
+
+        }
+      }
+
+      // Validar na pagina direcionada, se o usuario está logado, se não redirecionar ele para o login ou cadastro
+    </script>
+  </body>
+</html>
